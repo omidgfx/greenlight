@@ -101,7 +101,8 @@ class ApplicationController < ActionController::Base
     locale = if user && user.language != 'default'
       user.language
     else
-      http_accept_language.language_region_compatible_from(I18n.available_locales)
+      "fa_IR"
+      #http_accept_language.language_region_compatible_from(I18n.available_locales)
     end
 
     begin
@@ -109,7 +110,7 @@ class ApplicationController < ActionController::Base
     rescue
       # Default to English if there are any issues in language
       logger.error("Support: User locale is not supported (#{locale}")
-      I18n.locale = "en"
+      I18n.locale = "fa_IR"
     end
   end
 
